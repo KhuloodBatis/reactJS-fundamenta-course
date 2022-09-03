@@ -1,0 +1,94 @@
+<!-- Creating custom components -->
+<!-- http://localhost:3000/isolated/exercise/04.html -->
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+  <script type="text/babel">
+  
+  // function message({children}){
+  //   return <div className='message'>{children}</div>
+  // }
+
+
+  // const helloElement = message({children:'Hello World'})
+  // const goodbayElement = message({children:'Goodbay World'})
+ 
+  //   const element = (
+  //     <div className="container">
+  //     {helloElement},{goodbayElement}
+  //     </div>
+  //   )
+
+  // function message({children ,greeting}){
+  //   return <div className='message'>{children} ,{greeting}</div>
+  // }
+  // const hello = React.createElement(message,{children: 'hello KOOL',greeting:"Goodbay"})
+
+ 
+  //   const element = (
+  //     <div className="container">
+  //     {hello}
+  //     </div>
+  //   )
+  
+ 
+
+  //  function Message({children}){
+  //   return <div className='message'>{children}</div>
+  // }
+
+
+ 
+  //   const element = (
+  //     <div className="container">
+  //       <Message>Hello World</Message>
+  //       <Message>GoodBay World</Message>
+      
+  //     </div>
+  //   )
+//  const  propType ={
+//     string(props,propName, componentname){
+//     const type = typeof props[propName]
+//     if(type !== 'string'){
+//       return new Error(
+//         `hay the compnent ${componentname} needs the prop ${propName} to be a type of 'string' but was passed a ${type}`
+//       )
+//     }
+//   }
+//  }
+  function Message({subject, greeting}) {
+  return (
+    <div className="message">
+      {greeting}, {subject}
+    </div>
+  )
+}
+//! vaildation
+
+Message.propTypes = {
+  subject: PropTypes.string.isRequired,
+  greeting: PropTypes.string.isRequired,
+}
+    // const element = (
+    //   <div className="container">
+    //     <Message greeting="Hello" subject="World" />
+    //    <Message greeting="Goodbye" subject={5} />
+    //   </div>
+    // )
+    const element = (
+      <React.Fragment>
+        <Message greeting="Hello" subject="World" />
+       <Message greeting="Goodbye" subject="kool" />
+      </React.Fragment>
+    )
+
+
+
+    // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
+    ReactDOM.createRoot(document.getElementById('root')).render(element)
+  </script>
+</body>
